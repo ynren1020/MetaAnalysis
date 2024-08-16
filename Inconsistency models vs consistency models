@@ -1,0 +1,44 @@
+Inconsistency models vs consistency models in contrast based approach in network meta-analysis
+
+In the context of network meta-analysis (NMA), the Consistency and Inconsistency models refer to different approaches used to evaluate and combine evidence across a 
+network of studies. These models are particularly relevant in the "Contrast-Based" (CB) approach, which is a method of comparing the effects of different treatments 
+using summary statistics like odds ratios, risk ratios, or mean differences.
+
+1. Consistency Models
+A Consistency model assumes that the direct and indirect evidence in the network are consistent with each other. In other words, it assumes that the treatment effects 
+derived from different paths within the network are the same, regardless of whether they come from direct comparisons (e.g., treatment A vs. treatment B) or indirect
+comparisons (e.g., treatment A vs. treatment C and treatment B vs. treatment C). 
+  Assumption: The treatment effect is consistent across all paths in the network.
+  Modeling Approach: In a consistency model, a single effect size is estimated for each treatment comparison, using all available evidence. The assumption is that if 
+treatment A is better than treatment B and treatment B is better than treatment C, then treatment A should be better than treatment C by a consistent amount.
+  Statistical Implications: This model is simpler and generally more powerful because it pools all available data under the assumption of consistency. However, if the consistency 
+assumption is violated (i.e., if direct and indirect evidence differ significantly), the results may be misleading.
+
+2. Inconsistency Models
+An Inconsistency Model allows for the possibility that the direct and indirect evidence in the network might not be consistent. This model explicitly tests for and accounts for
+differences between direct and indirect estimates of treatment effects.
+  Assumption: There may be inconsistencies (differences) between direct and indirect comparisons within the network.
+  Modeling Approach: In an inconsistency model, separate estimates are made for direct and indirect comparisons. The model checks if the differences between these estimates are 
+statistically significant. If significant inconsistency is found, this suggests that the network's overall assumptions might not hold, and the pooled estimates might not be valid.
+  Statistical implications: This model is more complex and less powerful because it requires more parameters to estimate. However, it provides a safeguard against the risk of drawing
+incorrect conclusions from inconsistent evidence.
+
+Key Differences and Usage:
+  When to Use Consistency Models:
+    When you have reason to believe that all studies included in the network meta-analysis are similar in terms of population, interventions, outcomes, and other factors. 
+    When you want to maximize the statistical power by pooling all evidence under tha assumption that it is consistent.
+  When to Use Inconsistency Models:
+    When there is heterogeneity across studies or when previous analyses or domain expertise suggest that direct and indirect evidence might differ.
+    When you need to explicitly test the consistency assumption to ensure robustness of your conclusions. 
+
+Practical Application in NMA:
+  Evaluating Inconsistency: In practice, an NMA might start with a consistency model and then test for inconsistency by comparing the fit of the consistency model to that of an 
+inconsistency model. If significant inconsistency model is found, it might be necessary to explore the reasons behind it (e.g., through subgroup analysis, meta-regression, or 
+sensitivity analysis).
+  Software Implementation: Most NMA software, such as netmeta in R, offers tools to fit both consistency and inconsistency models. These tools also provide diagnostics (like 
+inconsistency plots and node-splitting methods) to help assess whether the consistency assumption holds.
+
+In summary, consistency models assume harmony across all evidence in the network, while inconsistency models allow for potential discordance, helping to ensure the robustness and 
+validity of the meta-analysis conclusions.
+
+
