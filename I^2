@@ -25,7 +25,9 @@ Q is the Cochran's heterogeneity statistic, which is calculated using: Q = sum[w
 wi is the weight assigned to each study, often based on the inverse of the variance(e.g., 1/Var(Yi)).
 Yi is the effect size estimate of the ith study
 Ybar is the weighted average effect size across all studies
-Q assesses whe
+Q assesses whether the observed difference in effect sizes across studies are greater than what would be expected by chance. High Q value indicates substantial 
+heterogeneity across the studies, suggesting that the variation in effect sizes is more than would be expected by chance. Low Q value suggests that the studies 
+are homogeneous, with little evidence of heterogeneity.
 
 2. calculate the degrees of freedom
 df = k - 1 where k is the number of studies 
@@ -38,6 +40,15 @@ The excess variance is given by: H^2 = Q/df
 5. Calculate I^2:
 Finally, the I^2 statistic is calculated using I^2 = (Q-df)/Q * 100%
 This formula calculates the proportion of total variation (Q) that is due to heterogeneity rather than chance.
+
+When calculating I^2 in meta-analysis, it is possible for the Q statistic to be smaller than the degrees of freedom, resulting in a negative value for I^2. The common
+and widely accepted approach when I^2 is negative is to set I^2 to 0%. A negative I^2 essentially suggests that the observed variation among the studies is less than
+what would be expected by chance alone, which indicates no real heterogeneity. Thus, setting I^2 to 0% is appropriate because it aligns with the interpretation of no heterogeneity.
+
+Why does this happen (I^2 is negative)?
+- small number of studies: when the meta-analysis includes only a few studies, Q may not accurately reflect true heterogeneity due to limited power. This can sometimes lead to Q being
+smaller than expected, resulting in a negative I^2.
+- small study variability: if the studies included in the meta-analysis have very similar effect sizes and variances, Q may be small, reflecting little between-study variability.
 
 
 
