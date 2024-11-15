@@ -1,0 +1,29 @@
+PAIC assumptions to control for population differences:
+Studies must have similar designs, e.g., same outcome definitions. PAIC methods cannot adjust for structural difference between studies.
+Because the joint covariate distribution is not available in aggregate BC trial, an additional assumption is required for both MAIC and STC:
+- The joint distribution of covariates in the trial is the product of the (published) marginal distributions (i.e., covariates are independent), or
+- The correlations between covariates in the aggregate BC trial are the same as those observed in the IPD AC trial.
+The index trial population should be broader than the comparator trial populations on all important baseline characteristics (including prognostic factors and effect modifiers).
+For example, if index trial had excluded vaccinated subjects, we would have no information on treatment outcomes in vaccinated subjects, thus not possible to adjust for differences in vaccine status
+in a comparison against a comparator trial if it contained vaccinated subjects. In this situation, we would require:
+- the fraction of vaccinated subjects in a comparator trial is small enough to have any noticetable effect on outcomes, or
+- Vaccination only has a negligible effect on outcomes.
+
+
+Cautionary Notes on MAIC and STC:
+- In the presence of effect modifiers, MAIC and STC results only generalizes to the population represented by the AgD trial. However, this may not be the population of interest for the company who performed the MAIC
+(e.g., the population represented by the IPD trial, or both the IPD and AgD trials, or other specific populations).
+
+However, if there are strong effect modifiers, contradictory conclusions may be reached if MAICs and STCs are conducted by two entities with the IPD and AgD being switched.
+
+The NICE DSU Technical Support Document 18 provides an example where both Novartis and AbbVie used MAIC to compare their respective drugs, the results appeared to conflict with each other. However, the two MAICs included
+different sets of covariates, complicating the understanding of the causes of this inconsistency.
+
+Conclusion: Indirect Treatment Comparisons: When are they needed and how do they work?
+- NMA is the gold standard for indirect comparisons of multiple treatments, however incomplete evidence networks and heterogeneity (among other things) between studies may limit the use.
+- STC and MAIC can overcome these challenges by carrying out a targeted comparison between outcomes for specific treatment arms of interest.
+- Statistical adjustment is required to reduce confounding in the comparisons. STCs achieve this with the use of outcome predictive models, while MAIC relies on reweighting subjects.
+- In practice, it is important to consider multiple approaches as sensitivity analyses and to provide totality of evidence as indirect treatment comparisons is at high risk of bias no matter which approach is chosen.
+
+
+
