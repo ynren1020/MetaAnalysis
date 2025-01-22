@@ -5,9 +5,29 @@
 # transitivity & consistency
 
 # Network Meta-Analysis models
+While network meta-analysis models may differ in their statistical approach, the good thing is that all should produce the same results when the sample size is sufficient. In general, no network meta-analysis method is more or less 
+valid than the other. You may therefore safely choose one or the other approach, depending on which one you find more intuitive, or based on the functionality of the R package which implements it.
+In most disciplines, methods based on frequentist inference are still much more common than Bayesian approaches. This means that some people might understand the kind of results produced by a frequentist model more easily. 
+
+A disadvantage is that the implementation of frequentist network meta-analysis in R does not yet support meta-regression, while this is possible using a Bayesian model. 
+
+In practice, a useful strategy is to choose one approach for the main analysis, and then employ the other approach in a sensitivity analysis. If the two methods come to the same conclusion, this increases our confidence that the
+findings are trustworthy.
 
 # Frequntist Network Meta-Analysis
+Network Meta-Analysis using {netmeta}: It can not be stressed enough that clinical decision-making in network meta-analyses should not be based on one single test or metric. Instead, we have to explore our model and its results with
+open eyes, check the patterns we find for their consistency, and take into account the large uncertainty that is often associated with some of the estimates.
 
 # Bayesian Network Meta-Analysis
+P(theta|Y) -> P(Y|theta)xP(theta), where P(theta) is the assumed prior distribution of theta, P(Y|theta) is the likelihood distribution, and P(theta|Y) is the posterior distribution. The posterior distribution represents our estimate
+of theta if we take both the observed data and our prior knowledge into account.
+Importantly, the posterior is still a distribution, not one estimated "true" value. This means that even the results of Bayesian inference are still probabilistic. They are also subjective, in the sense that they represent our beliefs
+concerning the actual parameter values. Therefore, in Bayesian statistics, we do not calculate confidence intervals around our estimates, but credible intervals (CrI).
+
+Another asset of Bayesian approaches is that the parameters do not have to follow a bell curve distribution. Other kinds of more complex distributions can also be modeled. A disadvantage of Bayesian inference, however, is that 
+generating the (joint) distribution from our collected data can be very computationally expensive. 
+
+Use {gemtc} package to perform the Bayesian network meta-analysis. (install jags and rjags packages first)
+
 
 
