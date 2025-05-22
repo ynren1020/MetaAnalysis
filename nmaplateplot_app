@@ -1,0 +1,62 @@
+library(shiny)
+library(nmaplateplot)
+library(readr)
+library(svglite)
+
+ui <- fluidPage(
+    titlePanel("NMA Plate Plot Generator"),
+    sidebarLayout(
+        sidebarPanel(
+            fileInput("datafile", "Upload Data File (CSV or RDS)",
+                      accept = c(".csv", ".rds")),
+            selectInput("method", "Design Method", choices = c("circle", "text"), selected = "circle"),
+            textInput("upper_label", "Upper Diagonal Name", value = "Efficacy"),
+            textInput("lower_label", "Lower Diagonal Name", value = "Acceptability"),
+            numericInput("plot_width", "Download Plot Width (inches)", value = 8, min = 4, max = 20, step = 1),
+            numericInput("plot_height", "Download Plot Height (inches)", value = 6, min = 4, max = 20, step = 1),
+            downloadButton("downloadPlot", "Download Plot (SVG)")
+        ),
+        mainPanel(
+            plotOutput("platePlot")
+        )
+    )
+)
+
+server <- function(input, output) {
+    dataset <- reactive({
+        req(input$datafile)
+        ext <- tools::file_ext(input$datafile$name)
+        if (ext == "csv") {
+            read_csv(input$datafile$datapath)
+        } else if (ext == "rds") {
+            readRDS(input$datafile$datapath)
+        } else {
+            validate("Please upload a CSV or RDS file")
+        }
+    })
+    
+    plot_reactive <- reactive({
+        req(dataset())
+        plateplot(dataset(),
+                  design_method = c(input$method, input$method),
+                  upper_diagonal_name = input$upper_label,
+                  lower_diagonal_name = input$lower_label)
+    })
+    
+    output$platePlot <- renderPlot({
+        plot_reactive()
+    })
+    
+    output$downloadPlot <- downloadHandler(
+        filename = function() {
+            paste0("nmaplateplot_", input$method, ".svg")
+        },
+        content = function(file) {
+            svglite::svglite(file, width = input$plot_width, height = input$plot_height)
+            print(plot_reactive())
+            dev.off()
+        }
+    )
+}
+
+shinyApp(ui = ui, server = server)
